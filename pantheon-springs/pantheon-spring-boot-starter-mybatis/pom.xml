@@ -9,7 +9,7 @@
         <version>${revision}</version>
     </parent>
 
-    <artifactId>pantheon-spring-boot-mybatis-starter</artifactId>
+    <artifactId>pantheon-spring-boot-starter-mybatis</artifactId>
 
     <dependencies>
         <dependency>

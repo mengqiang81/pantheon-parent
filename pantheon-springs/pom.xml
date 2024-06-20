@@ -12,12 +12,13 @@
     <artifactId>pantheon-springs</artifactId>
     <packaging>pom</packaging>
 
-    <name>Pantheon Spring Boot Modules Manager</name>
+    <name>Pantheon Spring Modules Manager</name>
 
     <modules>
         <module>pantheon-spring-boot-autoconfigure</module>
         <module>pantheon-spring-boot-starter</module>
-        <module>pantheon-spring-boot-mybatis-starter</module>
+        <module>pantheon-spring-boot-starter-mybatis</module>
+        <module>pantheon-spring-boot-starter-web</module>
     </modules>
 
 </project>

@@ -115,7 +115,12 @@
             </dependency>
             <dependency>
                 <groupId>com.alibaba.mos</groupId>
-                <artifactId>pantheon-mybatis-spring-boot-starter</artifactId>
+                <artifactId>pantheon-spring-boot-starter-mybatis</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.mos</groupId>
+                <artifactId>pantheon-spring-boot-starter-web</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>

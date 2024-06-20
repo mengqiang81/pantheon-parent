@@ -9,21 +9,31 @@ public class EnvironmentConstant {
      * 各环境前缀
      */
     public static final String LOCAL = "local";
+    public static final String LOCAL_TEST = "local-test";
     public static final String TESTING = "testing";
     public static final String STAGING = "staging";
     public static final String PRODUCTION = "production";
 
     /**
-     * 判断是否是否是日常环境
+     * 判断是否是否本地环境
      *
      * @param env 环境标记
      */
     public static boolean isLocal(String env) {
-        return LOCAL.equalsIgnoreCase(env);
+        return LOCAL.equalsIgnoreCase(env) || isLocalTest(env);
     }
 
     /**
-     * 判断是否是否是测试环境
+     * 判断是否是否是本地测试环境
+     *
+     * @param env 环境标记
+     */
+    public static boolean isLocalTest(String env) {
+        return LOCAL_TEST.equalsIgnoreCase(env);
+    }
+
+    /**
+     * 判断是否是否日常环境
      *
      * @param env 环境标记
      */
