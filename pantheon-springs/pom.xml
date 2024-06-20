@@ -17,7 +17,7 @@
     <modules>
         <module>pantheon-spring-boot-autoconfigure</module>
         <module>pantheon-spring-boot-starter</module>
-        <module>pantheon-mybatis-spring-boot-starter</module>
+        <module>pantheon-spring-boot-mybatis-starter</module>
     </modules>
 
 </project>
