@@ -1,0 +1,16 @@
+### Mac temp files
+.DS_Store
+
+### JetBrains
+.idea
+*.iml
+
+### Maven Build Files and Caches
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+
+### Project Runtime files
+logs
