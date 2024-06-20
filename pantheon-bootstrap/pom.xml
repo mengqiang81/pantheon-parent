@@ -137,7 +137,7 @@
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
                             <profiles>${spring.profiles.active}</profiles>
-                            <finalName>${project.name}</finalName>
+                            <finalName>${project.artifactId}</finalName>
                             <layers>
                                 <enabled>true</enabled>
                             </layers>
@@ -165,7 +165,7 @@
                         <configuration>
                             <mainClass>com.alibaba.mos.PantheonApplication</mainClass>
                             <profiles>${spring.profiles.active}</profiles>
-                            <finalName>${project.name}</finalName>
+                            <finalName>${project.artifactId}</finalName>
                         </configuration>
                         <executions>
                             <execution>
