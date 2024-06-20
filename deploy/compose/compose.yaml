@@ -1,0 +1,30 @@
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'example'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - './mysql/initdb.d:/docker-entrypoint-initdb.d'
+  redis:
+    image: valkey/valkey:7.2
+    container_name: valkey
+    ports:
+      - '6379:6379'
+    expose:
+      - '6379'
+  kafka:
+    image: apache/kafka:3.7.0
+    container_name: kafka
+    ports:
+      - '9092:9092'
+    expose:
+      - '9092'
