@@ -14,7 +14,7 @@
 
     <name>Pantheon Extend Modules Manager</name>
     <modules>
-        <module>pantheon-mybatis-extend</module>
+        <module>pantheon-extend-mybatis</module>
     </modules>
 
     <dependencies>

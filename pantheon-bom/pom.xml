@@ -100,7 +100,7 @@
             </dependency>
             <dependency>
                 <groupId>com.alibaba.mos</groupId>
-                <artifactId>pantheon-mybatis-extend</artifactId>
+                <artifactId>pantheon-extend-mybatis</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
