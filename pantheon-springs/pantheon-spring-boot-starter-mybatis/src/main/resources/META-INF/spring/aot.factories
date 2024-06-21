@@ -1,0 +1,8 @@
+org.springframework.aot.hint.RuntimeHintsRegistrar=\
+com.alibaba.mos.pantheon.extend.mybatis.spring.aot.MybatisBasicRuntimeHintsRegistrar
+
+org.springframework.beans.factory.aot.BeanFactoryInitializationAotProcessor=\
+com.alibaba.mos.pantheon.extend.mybatis.spring.aot.MyBatisMapperInterfaceBeanFactoryInitializationAotProcessor
+
+org.springframework.beans.factory.aot.BeanRegistrationExcludeFilter=\
+com.alibaba.mos.pantheon.extend.mybatis.spring.aot.MybatisBeanRegistrationExcludeFilter

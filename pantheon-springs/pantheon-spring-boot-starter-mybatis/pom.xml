@@ -16,5 +16,9 @@
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.mos</groupId>
+            <artifactId>pantheon-extend-mybatis</artifactId>
+        </dependency>
     </dependencies>
 </project>

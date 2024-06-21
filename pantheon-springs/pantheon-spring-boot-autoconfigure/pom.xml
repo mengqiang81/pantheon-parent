@@ -21,6 +21,10 @@
             <artifactId>spring-boot-actuator-autoconfigure</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.mos</groupId>
+            <artifactId>pantheon-core-api</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
