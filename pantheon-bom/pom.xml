@@ -125,11 +125,6 @@
             </dependency>
             <dependency>
                 <groupId>com.alibaba.mos</groupId>
-                <artifactId>pantheon-spring-boot-starter-kafka</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba.mos</groupId>
                 <artifactId>pantheon-spring-boot-starter-cache</artifactId>
                 <version>${revision}</version>
             </dependency>

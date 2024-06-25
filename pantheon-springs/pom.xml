@@ -19,7 +19,6 @@
         <module>pantheon-spring-boot-starter</module>
         <module>pantheon-spring-boot-starter-mybatis</module>
         <module>pantheon-spring-boot-starter-web</module>
-        <module>pantheon-spring-boot-starter-kafka</module>
         <module>pantheon-spring-boot-starter-cache</module>
     </modules>
 

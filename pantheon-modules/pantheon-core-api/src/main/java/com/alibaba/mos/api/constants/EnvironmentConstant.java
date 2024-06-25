@@ -1,4 +1,4 @@
-package com.alibaba.mos.api;
+package com.alibaba.mos.api.constants;
 
 import lombok.experimental.UtilityClass;
 

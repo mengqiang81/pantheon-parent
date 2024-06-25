@@ -1,7 +1,7 @@
 services:
   mysql:
-    image: mysql:5.7
     container_name: mysql
+    image: mysql:5.7
     restart: always
     environment:
       MYSQL_DATABASE: 'example'
@@ -15,16 +15,23 @@ services:
     volumes:
       - './mysql/initdb.d:/docker-entrypoint-initdb.d'
   redis:
-    image: valkey/valkey:7.2
     container_name: valkey
+    image: valkey/valkey:7.2
     ports:
       - '6379:6379'
     expose:
       - '6379'
-  kafka:
-    image: apache/kafka:3.7.0
-    container_name: kafka
+  pulsar:
+    container_name: pulsar
+    image: apachepulsar/pulsar:3.3.0
+    environment:
+      PULSAR_STANDALONE_USE_ZOOKEEPER: "1"
+      BOOKIE_MEM: "-Xms256m -Xmx256m -XX:MaxDirectMemorySize=256m"
+      PULSAR_MEM: "-Xms256m -Xmx256m -XX:MaxDirectMemorySize=256m"
+    command: "bin/pulsar standalone"
     ports:
-      - '9092:9092'
+      - '6650:6650'
+      - '8080:8080'
     expose:
-      - '9092'
+      - '6650'
+      - '8080'
