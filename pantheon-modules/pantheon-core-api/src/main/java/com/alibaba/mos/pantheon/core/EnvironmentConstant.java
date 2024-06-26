@@ -1,4 +1,4 @@
-package com.alibaba.mos.api.constants;
+package com.alibaba.mos.pantheon.core;
 
 import lombok.experimental.UtilityClass;
 

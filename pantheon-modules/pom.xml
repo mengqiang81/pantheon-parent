@@ -15,6 +15,7 @@
     <name>Pantheon Core Modules Manager</name>
     <modules>
         <module>pantheon-core-api</module>
+        <module>pantheon-core-rpc</module>
     </modules>
 
     <build>

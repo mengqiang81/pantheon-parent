@@ -27,6 +27,25 @@ import java.util.stream.Stream;
 
 public class MyBatisMapperInterfaceBeanFactoryInitializationAotProcessor implements BeanFactoryInitializationAotProcessor {
 
+    private static Class<?> typeToClass(Type src, Class<?> fallback) {
+        Class<?> result = null;
+        if (src instanceof Class<?> aClass) {
+            if (aClass.isArray()) {
+                result = ((Class<?>) src).getComponentType();
+            } else {
+                result = (Class<?>) src;
+            }
+        } else if (src instanceof ParameterizedType parameterizedType) {
+            int index = (parameterizedType.getRawType() instanceof Class
+                         && Map.class.isAssignableFrom((Class<?>) parameterizedType.getRawType())
+                         && parameterizedType.getActualTypeArguments().length > 1) ? 1 : 0;
+            Type actualType = parameterizedType.getActualTypeArguments()[index];
+            result = typeToClass(actualType, fallback);
+        }
+
+        return Objects.isNull(result) ? fallback : result;
+    }
+
     @Override
     public BeanFactoryInitializationAotContribution processAheadOfTime(ConfigurableListableBeanFactory beanFactory) {
         String[] beanNames = beanFactory.getBeanNamesForType(MapperFactoryBean.class);
@@ -87,25 +106,6 @@ public class MyBatisMapperInterfaceBeanFactoryInitializationAotProcessor impleme
     private Class<?> resolveReturnClass(Class<?> type, Method method) {
         Type resolvedReturnType = TypeParameterResolver.resolveReturnType(method, type);
         return typeToClass(resolvedReturnType, method.getReturnType());
-    }
-
-    private static Class<?> typeToClass(Type src, Class<?> fallback) {
-        Class<?> result = null;
-        if (src instanceof Class<?> aClass) {
-            if (aClass.isArray()) {
-                result = ((Class<?>) src).getComponentType();
-            } else {
-                result = (Class<?>) src;
-            }
-        } else if (src instanceof ParameterizedType parameterizedType) {
-            int index = (parameterizedType.getRawType() instanceof Class
-                    && Map.class.isAssignableFrom((Class<?>) parameterizedType.getRawType())
-                    && parameterizedType.getActualTypeArguments().length > 1) ? 1 : 0;
-            Type actualType = parameterizedType.getActualTypeArguments()[index];
-            result = typeToClass(actualType, fallback);
-        }
-
-        return Objects.isNull(result) ? fallback : result;
     }
 
     @SafeVarargs
