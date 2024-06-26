@@ -40,6 +40,10 @@
             <artifactId>pantheon-spring-boot-starter-mybatis</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.pulsar</groupId>
+            <artifactId>spring-pulsar</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
         </dependency>
@@ -58,8 +62,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka-test</artifactId>
+            <groupId>org.springframework.pulsar</groupId>
+            <artifactId>spring-pulsar-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
