@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class MybatisAotAutoConfigure {
 
     @Bean
-    public MybatisMapperFactoryBeanPostProcessor mapperFactoryBeanPostProcessor() {
+    static MybatisMapperFactoryBeanPostProcessor mapperFactoryBeanPostProcessor() {
         return new MybatisMapperFactoryBeanPostProcessor();
     }
 
