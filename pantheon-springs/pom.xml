@@ -21,6 +21,7 @@
         <module>pantheon-spring-boot-starter-web</module>
         <module>pantheon-spring-boot-starter-cache</module>
         <module>pantheon-spring-boot-starter-rpc</module>
+        <module>pantheon-spring-boot-starter-pulsar</module>
     </modules>
 
 </project>

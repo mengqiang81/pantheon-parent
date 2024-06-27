@@ -92,7 +92,6 @@
                 <artifactId>mybatis-spring-boot-test-autoconfigure</artifactId>
                 <version>${mybatis.spring.starter.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.alibaba.mos</groupId>
                 <artifactId>pantheon-core-api</artifactId>
@@ -141,6 +140,11 @@
             <dependency>
                 <groupId>com.alibaba.mos</groupId>
                 <artifactId>pantheon-spring-boot-starter-rpc</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.mos</groupId>
+                <artifactId>pantheon-spring-boot-starter-pulsar</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>
