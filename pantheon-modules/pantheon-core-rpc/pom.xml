@@ -13,6 +13,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.alibaba.mos</groupId>
+            <artifactId>pantheon-core-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>

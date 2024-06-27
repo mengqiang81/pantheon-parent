@@ -228,6 +228,10 @@
                         <artifactId>native-maven-plugin</artifactId>
                         <configuration>
                             <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+                            <metadataRepository>
+                                <enabled>true</enabled>
+                            </metadataRepository>
+                            <quickBuild>true</quickBuild>
                             <buildArgs>
                                 <buildArg>--verbose</buildArg>
                                 <buildArg>-H:+StaticExecutableWithDynamicLibC</buildArg>
@@ -285,6 +289,9 @@
                         <artifactId>native-maven-plugin</artifactId>
                         <configuration>
                             <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+                            <metadataRepository>
+                                <enabled>true</enabled>
+                            </metadataRepository>
                             <buildArgs>
                                 <buildArg>--verbose</buildArg>
                             </buildArgs>
