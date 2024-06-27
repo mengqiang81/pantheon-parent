@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -78,7 +79,7 @@ public class RpcServerServlet extends HttpServlet {
         } catch (Exception e) {
             log.error("method:{} invoke error", pathParams[1] + "." + pathParams[2] ,e);
             resp.setStatus(HTTP_SERVER_ERROR);
-            resp.getWriter().println(EXECUTE_ERROR_MSG);
+            resp.getOutputStream().write(EXECUTE_ERROR_MSG.getBytes(StandardCharsets.UTF_8));
         }
     }
 }
