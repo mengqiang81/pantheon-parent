@@ -1,8 +1,8 @@
 package com.alibaba.mos.pantheon.extend.rpc.spring;
 
-import com.alibaba.mos.pantheon.rpc.api.RpcMethod;
-import com.alibaba.mos.pantheon.rpc.api.RpcParam;
-import com.alibaba.mos.pantheon.rpc.api.RpcProvider;
+import com.alibaba.mos.pantheon.rpc.api.Method;
+import com.alibaba.mos.pantheon.rpc.api.Param;
+import com.alibaba.mos.pantheon.rpc.api.Rpc;
 import com.alibaba.mos.pantheon.rpc.api.UnSupportMultipleInterfacesException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -25,17 +25,17 @@ class AnnotationProviderDiscoverer4Test {
         });
     }
 
-    @RpcProvider("demo")
+    @Rpc("demo")
     public interface DemoService {
-        @RpcMethod("say")
-        String sayHello(@RpcParam("firstName") String firstName, String lastName);
+        @Method("say")
+        String sayHello(@Param("firstName") String firstName, String lastName);
     }
 
 
-    @RpcProvider("demo2")
+    @Rpc("demo2")
     public interface Demo2Service {
-        @RpcMethod("say")
-        String sayHello(@RpcParam("firstName") String firstName, String lastName);
+        @Method("say")
+        String sayHello(@Param("firstName") String firstName, String lastName);
     }
 
     @Configuration

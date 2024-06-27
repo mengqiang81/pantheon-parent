@@ -1,9 +1,9 @@
 package com.alibaba.mos.pantheon.extend.rpc.spring;
 
 import com.alibaba.mos.pantheon.rpc.api.InvalidParamNameException;
-import com.alibaba.mos.pantheon.rpc.api.RpcMethod;
-import com.alibaba.mos.pantheon.rpc.api.RpcParam;
-import com.alibaba.mos.pantheon.rpc.api.RpcProvider;
+import com.alibaba.mos.pantheon.rpc.api.Method;
+import com.alibaba.mos.pantheon.rpc.api.Param;
+import com.alibaba.mos.pantheon.rpc.api.Rpc;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +25,10 @@ class AnnotationProviderDiscoverer2Test {
         });
     }
 
-    @RpcProvider("demo")
+    @Rpc("demo")
     public interface DemoService {
-        @RpcMethod("say")
-        String sayHello(@RpcParam("firstName") String firstName, String lastName);
+        @Method("say")
+        String sayHello(@Param("firstName") String firstName, String lastName);
     }
 
     @Configuration

@@ -1,8 +1,8 @@
 package com.alibaba.mos.pantheon.extend.rpc.spring;
 
-import com.alibaba.mos.pantheon.rpc.api.RpcMethod;
-import com.alibaba.mos.pantheon.rpc.api.RpcParam;
-import com.alibaba.mos.pantheon.rpc.api.RpcProvider;
+import com.alibaba.mos.pantheon.rpc.api.Method;
+import com.alibaba.mos.pantheon.rpc.api.Param;
+import com.alibaba.mos.pantheon.rpc.api.Rpc;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,17 +47,17 @@ class AnnotationProviderDiscovererTest {
         assertEquals(String.class, def.getReturnType());
     }
 
-    @RpcProvider("demo")
+    @Rpc("demo")
     public interface Demo1Service {
 
-        @RpcMethod("say")
+        @Method("say")
         String sayHello();
 
-        @RpcMethod("sayWithName")
+        @Method("sayWithName")
         String sayHello(String name);
 
-        @RpcMethod("sayWithFirstNameAndLastName")
-        String sayHello(@RpcParam("firstName") String firstName, @RpcParam("lastName") String lastName);
+        @Method("sayWithFirstNameAndLastName")
+        String sayHello(@Param("firstName") String firstName, @Param("lastName") String lastName);
 
         void returnVoidMethod(String name);
 
@@ -65,9 +65,9 @@ class AnnotationProviderDiscovererTest {
     }
 
 
-    @RpcProvider
+    @Rpc
     public interface Demo2Service {
-        Point method(@RpcParam("name") String name, @RpcParam("point") Point point);
+        Point method(@Param("name") String name, @Param("point") Point point);
     }
 
     @Configuration
