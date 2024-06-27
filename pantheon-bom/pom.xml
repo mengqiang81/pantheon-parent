@@ -138,6 +138,11 @@
                 <artifactId>pantheon-spring-boot-starter-cache</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba.mos</groupId>
+                <artifactId>pantheon-spring-boot-starter-rpc</artifactId>
+                <version>${revision}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
