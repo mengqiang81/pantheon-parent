@@ -1,6 +1,6 @@
 package com.alibaba.mos.pantheon.extend.rpc.spring;
 
-import com.alibaba.mos.pantheon.rpc.api.NotFoundInterfaceException;
+import com.alibaba.mos.pantheon.extend.rpc.exception.NotFoundInterfaceException;
 import com.alibaba.mos.pantheon.rpc.api.Method;
 import com.alibaba.mos.pantheon.rpc.api.Param;
 import com.alibaba.mos.pantheon.rpc.api.Rpc;
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 class AnnotationProviderDiscoverer3Test {
 
     @Autowired
-    private AnnotationRpcProviderDiscoverer discoverer;
+    private AnnotationProviderDiscoverer discoverer;
 
     @Test
     void get() {
@@ -34,8 +34,8 @@ class AnnotationProviderDiscoverer3Test {
     static class Config {
 
         @Bean
-        public AnnotationRpcProviderDiscoverer annotationRpcProviderDiscoverer() {
-            return new AnnotationRpcProviderDiscoverer();
+        public AnnotationProviderDiscoverer annotationRpcProviderDiscoverer() {
+            return new AnnotationProviderDiscoverer();
         }
 
         @Bean

@@ -1,4 +1,4 @@
-package com.alibaba.mos.pantheon.rpc.api;
+package com.alibaba.mos.pantheon.extend.rpc.exception;
 
 public class DuplicateParamNameException extends InvalidParamNameException {
 

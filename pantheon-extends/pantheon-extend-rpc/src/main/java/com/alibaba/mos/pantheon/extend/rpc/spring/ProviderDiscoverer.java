@@ -3,8 +3,8 @@ package com.alibaba.mos.pantheon.extend.rpc.spring;
 import java.util.Collection;
 
 @FunctionalInterface
-public interface RpcProviderDiscoverer {
+public interface ProviderDiscoverer {
 
-    Collection<RpcProviderDefinition> findProviders();
+    Collection<ProviderDefinition> findProviders();
 
 }

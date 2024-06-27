@@ -1,9 +1,9 @@
 package com.alibaba.mos.pantheon.extend.rpc.spring;
 
+import com.alibaba.mos.pantheon.extend.rpc.exception.UnSupportMultipleInterfacesException;
 import com.alibaba.mos.pantheon.rpc.api.Method;
 import com.alibaba.mos.pantheon.rpc.api.Param;
 import com.alibaba.mos.pantheon.rpc.api.Rpc;
-import com.alibaba.mos.pantheon.rpc.api.UnSupportMultipleInterfacesException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 class AnnotationProviderDiscoverer4Test {
 
     @Autowired
-    private AnnotationRpcProviderDiscoverer discoverer;
+    private AnnotationProviderDiscoverer discoverer;
 
     @Test
     void get() {
@@ -42,8 +42,8 @@ class AnnotationProviderDiscoverer4Test {
     static class Config {
 
         @Bean
-        public AnnotationRpcProviderDiscoverer annotationRpcProviderDiscoverer() {
-            return new AnnotationRpcProviderDiscoverer();
+        public AnnotationProviderDiscoverer annotationRpcProviderDiscoverer() {
+            return new AnnotationProviderDiscoverer();
         }
 
         @Bean

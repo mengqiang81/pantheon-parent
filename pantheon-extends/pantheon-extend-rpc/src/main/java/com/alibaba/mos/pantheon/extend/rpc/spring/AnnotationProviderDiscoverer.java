@@ -1,5 +1,9 @@
 package com.alibaba.mos.pantheon.extend.rpc.spring;
 
+import com.alibaba.mos.pantheon.extend.rpc.exception.DuplicateParamNameException;
+import com.alibaba.mos.pantheon.extend.rpc.exception.InvalidParamNameException;
+import com.alibaba.mos.pantheon.extend.rpc.exception.NotFoundInterfaceException;
+import com.alibaba.mos.pantheon.extend.rpc.exception.UnSupportMultipleInterfacesException;
 import com.alibaba.mos.pantheon.rpc.api.*;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -9,14 +13,14 @@ import org.springframework.util.ReflectionUtils;
 import java.lang.reflect.Parameter;
 import java.util.*;
 
-public class AnnotationRpcProviderDiscoverer implements ApplicationContextAware, RpcProviderDiscoverer {
+public class AnnotationProviderDiscoverer implements ApplicationContextAware, ProviderDiscoverer {
 
     private ApplicationContext applicationContext;
 
     @Override
-    public Collection<RpcProviderDefinition> findProviders() {
+    public Collection<ProviderDefinition> findProviders() {
         String[] beanNames = this.applicationContext.getBeanNamesForAnnotation(Rpc.class);
-        List<RpcProviderDefinition> definitions = new ArrayList<>();
+        List<ProviderDefinition> definitions = new ArrayList<>();
         for (String beanName : beanNames) {
             Rpc serviceAnnotation = applicationContext.findAnnotationOnBean(beanName, Rpc.class);
             Object beanInstant = this.applicationContext.getBean(beanName);
@@ -43,10 +47,10 @@ public class AnnotationRpcProviderDiscoverer implements ApplicationContextAware,
                 if (Objects.nonNull(methodAnnotation) && Objects.nonNull(methodAnnotation.value()) && !methodAnnotation.value().isBlank()) {
                     methodName = methodAnnotation.value();
                 }
-                RpcProviderDefinition definition = new RpcProviderDefinition();
-                definition.setServiceName(serviceName.toLowerCase());
+                ProviderDefinition definition = new ProviderDefinition();
+                definition.setServiceName(serviceName);
                 definition.setServiceInstance(beanInstant);
-                definition.setMethodName(methodName.toLowerCase());
+                definition.setMethodName(methodName);
                 definition.setMethodInstance(method);
                 definition.setParamTypes(extractParams(interType, method));
                 definition.setReturnType(method.getReturnType());

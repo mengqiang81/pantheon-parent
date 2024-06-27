@@ -22,27 +22,27 @@ import static org.junit.jupiter.api.Assertions.*;
 class AnnotationProviderDiscovererTest {
 
     @Autowired
-    private AnnotationRpcProviderDiscoverer discoverer;
+    private AnnotationProviderDiscoverer discoverer;
 
     @Test
     void get() {
-        Collection<RpcProviderDefinition> defs = discoverer.findProviders();
+        Collection<ProviderDefinition> defs = discoverer.findProviders();
         Assertions.assertEquals(defs.size(), 6);
 
-        Map<String, RpcProviderDefinition> groups = defs.stream()
+        Map<String, ProviderDefinition> groups = defs.stream()
                 .collect(Collectors.toMap(o -> o.getServiceName() + "." + o.getMethodName(), o -> o));
         Assertions.assertNotNull(groups.get("demo.say"));
-        Assertions.assertNotNull(groups.get("demo.saywithname"));
-        Assertions.assertNotNull(groups.get("demo.saywithfirstnameandlastname"));
-        Assertions.assertNotNull(groups.get("demo.returnvoidmethod"));
-        Assertions.assertNotNull(groups.get("demo.bothvoidmethod"));
-        Assertions.assertNotNull(groups.get("com.alibaba.mos.pantheon.extend.rpc.spring.annotationproviderdiscoverertest$demo2service.method"));
+        Assertions.assertNotNull(groups.get("demo.sayWithName"));
+        Assertions.assertNotNull(groups.get("demo.sayWithFirstNameAndLastName"));
+        Assertions.assertNotNull(groups.get("demo.returnVoidMethod"));
+        Assertions.assertNotNull(groups.get("demo.bothVoidMethod"));
+        Assertions.assertNotNull(groups.get("com.alibaba.mos.pantheon.extend.rpc.spring.AnnotationProviderDiscovererTest$Demo2Service.method"));
 
-        RpcProviderDefinition def = groups.get("demo.say");
+        ProviderDefinition def = groups.get("demo.say");
         assertTrue(def.getParamTypes().isEmpty());
         assertEquals(String.class, def.getReturnType());
 
-        def = groups.get("demo.saywithname");
+        def = groups.get("demo.sayWithName");
         assertFalse(def.getParamTypes().isEmpty());
         assertEquals(String.class, def.getReturnType());
     }
@@ -74,8 +74,8 @@ class AnnotationProviderDiscovererTest {
     static class Config {
 
         @Bean
-        public AnnotationRpcProviderDiscoverer annotationRpcProviderDiscoverer() {
-            return new AnnotationRpcProviderDiscoverer();
+        public AnnotationProviderDiscoverer annotationRpcProviderDiscoverer() {
+            return new AnnotationProviderDiscoverer();
         }
 
         @Bean
