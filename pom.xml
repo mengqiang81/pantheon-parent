@@ -34,7 +34,7 @@
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <native-build-tools-plugin.version>0.10.2</native-build-tools-plugin.version>
-        <spring-boot.version>3.3.0</spring-boot.version>
+        <spring-boot.version>3.3.1</spring-boot.version>
     </properties>
 
     <dependencyManagement>
