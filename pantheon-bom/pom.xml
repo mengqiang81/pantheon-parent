@@ -116,6 +116,11 @@
             </dependency>
             <dependency>
                 <groupId>com.alibaba.mos</groupId>
+                <artifactId>pantheon-extend-cache</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.mos</groupId>
                 <artifactId>pantheon-extend-rpc</artifactId>
                 <version>${revision}</version>
             </dependency>
