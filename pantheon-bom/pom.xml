@@ -17,6 +17,7 @@
         <!--IMPORT依赖-->
         <spring-boot.version>3.3.1</spring-boot.version>
         <guava.version>33.2.1-jre</guava.version>
+        <protobuf.version>3.25.3</protobuf.version>
 
         <!--其它包依赖-->
         <mybatis.version>3.5.16</mybatis.version>
@@ -61,7 +62,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
@@ -92,6 +92,13 @@
                 <artifactId>mybatis-spring-boot-test-autoconfigure</artifactId>
                 <version>${mybatis.spring.starter.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.6</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.alibaba.mos</groupId>
                 <artifactId>pantheon-core-api</artifactId>
