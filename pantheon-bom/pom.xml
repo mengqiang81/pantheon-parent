@@ -31,6 +31,10 @@
         <aliyun.oss.version>3.17.4</aliyun.oss.version>
         <aliyun.opensearch.version>6.0.1</aliyun.opensearch.version>
 
+        <!--不推荐的包-->
+        <fastjson.version>1.2.83</fastjson.version>
+        <fastjson2.version>2.0.51</fastjson2.version>
+
         <!--兼容依赖-->
         <apache.commons.lang.version>2.6</apache.commons.lang.version>
 
@@ -157,6 +161,22 @@
                 <groupId>com.aliyun.opensearch</groupId>
                 <artifactId>aliyun-sdk-opensearch</artifactId>
                 <version>${aliyun.opensearch.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2-kotlin</artifactId>
+                <version>${fastjson2.version}</version>
             </dependency>
 
             <dependency>
