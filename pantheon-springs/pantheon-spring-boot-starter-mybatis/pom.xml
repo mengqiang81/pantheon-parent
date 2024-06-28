@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.alibaba.mos</groupId>
-            <artifactId>pantheon-spring-boot-autoconfigure</artifactId>
+            <artifactId>pantheon-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
