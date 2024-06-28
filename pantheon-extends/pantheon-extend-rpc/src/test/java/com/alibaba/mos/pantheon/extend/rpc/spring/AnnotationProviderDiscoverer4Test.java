@@ -20,9 +20,7 @@ class AnnotationProviderDiscoverer4Test {
 
     @Test
     void get() {
-        Assertions.assertThrows(UnSupportMultipleInterfacesException.class, () -> {
-            discoverer.findProviders();
-        });
+        Assertions.assertThrows(UnSupportMultipleInterfacesException.class, () -> discoverer.findProviders());
     }
 
     @Rpc("demo")

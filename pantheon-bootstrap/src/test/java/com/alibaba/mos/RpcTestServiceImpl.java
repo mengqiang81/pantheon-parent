@@ -75,16 +75,16 @@ public class RpcTestServiceImpl implements RpcTestService {
 
     @Override
     public Point t14() {
-        return new Point(1,1);
+        return new Point(1, 1);
     }
 
     @Override
     public List<Point> t15() {
-        return List.of(new Point(1,1));
+        return List.of(new Point(1, 1));
     }
 
     @Override
     public Map<String, Point> t16() {
-        return Map.of("1_1", new Point(1,1));
+        return Map.of("1_1", new Point(1, 1));
     }
 }

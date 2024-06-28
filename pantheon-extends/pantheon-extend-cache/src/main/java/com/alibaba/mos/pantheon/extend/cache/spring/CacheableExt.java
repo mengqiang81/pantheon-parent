@@ -11,30 +11,30 @@ import java.lang.annotation.*;
 @Documented
 @Cacheable
 public @interface CacheableExt {
-    @AliasFor(annotation = Cacheable.class,attribute = "value")
+    @AliasFor(annotation = Cacheable.class, attribute = "value")
     String[] value() default {};
 
-    @AliasFor(annotation = Cacheable.class,attribute = "cacheNames")
+    @AliasFor(annotation = Cacheable.class, attribute = "cacheNames")
     String[] cacheNames() default {};
 
-    @AliasFor(annotation = Cacheable.class,attribute = "key")
+    @AliasFor(annotation = Cacheable.class, attribute = "key")
     String key() default "";
 
-    @AliasFor(annotation = Cacheable.class,attribute = "keyGenerator")
+    @AliasFor(annotation = Cacheable.class, attribute = "keyGenerator")
     String keyGenerator() default "";
 
-    @AliasFor(annotation = Cacheable.class,attribute = "cacheManager")
+    @AliasFor(annotation = Cacheable.class, attribute = "cacheManager")
     String cacheManager() default "";
 
-    @AliasFor(annotation = Cacheable.class,attribute = "cacheResolver")
+    @AliasFor(annotation = Cacheable.class, attribute = "cacheResolver")
     String cacheResolver() default "";
 
-    @AliasFor(annotation = Cacheable.class,attribute = "condition")
+    @AliasFor(annotation = Cacheable.class, attribute = "condition")
     String condition() default "";
 
-    @AliasFor(annotation = Cacheable.class,attribute = "unless")
+    @AliasFor(annotation = Cacheable.class, attribute = "unless")
     String unless() default "";
 
-    @AliasFor(annotation = Cacheable.class,attribute = "sync")
+    @AliasFor(annotation = Cacheable.class, attribute = "sync")
     boolean sync() default false;
 }

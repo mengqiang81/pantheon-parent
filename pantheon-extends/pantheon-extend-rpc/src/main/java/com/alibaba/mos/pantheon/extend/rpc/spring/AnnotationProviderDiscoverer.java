@@ -4,7 +4,9 @@ import com.alibaba.mos.pantheon.extend.rpc.exception.DuplicateParamNameException
 import com.alibaba.mos.pantheon.extend.rpc.exception.InvalidParamNameException;
 import com.alibaba.mos.pantheon.extend.rpc.exception.NotFoundInterfaceException;
 import com.alibaba.mos.pantheon.extend.rpc.exception.UnSupportMultipleInterfacesException;
-import com.alibaba.mos.pantheon.rpc.api.*;
+import com.alibaba.mos.pantheon.rpc.api.Method;
+import com.alibaba.mos.pantheon.rpc.api.Param;
+import com.alibaba.mos.pantheon.rpc.api.Rpc;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;

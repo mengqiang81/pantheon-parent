@@ -20,9 +20,7 @@ class AnnotationProviderDiscoverer1Test {
 
     @Test
     void get() {
-        Assertions.assertThrows(DuplicateParamNameException.class, () -> {
-            discoverer.findProviders();
-        });
+        Assertions.assertThrows(DuplicateParamNameException.class, () -> discoverer.findProviders());
     }
 
     @Rpc("demo")

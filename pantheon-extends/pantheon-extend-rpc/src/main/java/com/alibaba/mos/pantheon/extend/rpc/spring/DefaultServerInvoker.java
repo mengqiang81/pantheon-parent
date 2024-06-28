@@ -1,7 +1,7 @@
 package com.alibaba.mos.pantheon.extend.rpc.spring;
 
 import com.alibaba.mos.pantheon.extend.rpc.Resp;
-import com.alibaba.mos.pantheon.extend.rpc.exception.DuplicateParamNameException;
+import com.alibaba.mos.pantheon.extend.rpc.exception.DuplicateServiceException;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -27,6 +27,10 @@ public class DefaultServerInvoker implements ServerInvoker {
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     private static final Map<String, ProviderDefinition> definitionMap = new ConcurrentHashMap<>();
+
+    private static String getFormatted(String serviceName, String methodName) {
+        return "%s.%s".formatted(serviceName.toLowerCase(), methodName.toLowerCase());
+    }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
@@ -54,28 +58,28 @@ public class DefaultServerInvoker implements ServerInvoker {
             MAPPER.writeValue(output, resp);
             return;
         }
-        List<Object> parmas = new ArrayList<>();
+        List<Object> params = new ArrayList<>();
         if (provider.getParamTypes().size() == 1) {
             for (Map.Entry<String, Class<?>> entry : provider.getParamTypes().entrySet()) {
-                parmas.add(MAPPER.readValue(input, entry.getValue()));
+                params.add(MAPPER.readValue(input, entry.getValue()));
             }
         } else {
             JsonNode nodes = MAPPER.readTree(input);
             for (Map.Entry<String, Class<?>> entry : provider.getParamTypes().entrySet()) {
                 JsonNode node = nodes.get(entry.getKey());
                 if (Objects.isNull(node) || node.isNull()) {
-                    parmas.add(null);
+                    params.add(null);
                 } else {
-                    parmas.add(MAPPER.convertValue(node, entry.getValue()));
+                    params.add(MAPPER.convertValue(node, entry.getValue()));
                 }
             }
         }
         Object ret = null;
         try {
-            if (parmas.isEmpty()) {
+            if (params.isEmpty()) {
                 ret = provider.getMethodInstance().invoke(provider.getServiceInstance());
             } else {
-                ret = provider.getMethodInstance().invoke(provider.getServiceInstance(), parmas.toArray());
+                ret = provider.getMethodInstance().invoke(provider.getServiceInstance(), params.toArray());
             }
         } catch (Exception e) {
             log.error("method:{} invoke error", key);
@@ -91,18 +95,13 @@ public class DefaultServerInvoker implements ServerInvoker {
         }
     }
 
-
     public void addAll(Collection<ProviderDefinition> providers) {
         for (ProviderDefinition provider : providers) {
             String key = getFormatted(provider.getServiceName(), provider.getMethodName());
             if (definitionMap.containsKey(key)) {
-                throw new DuplicateParamNameException(String.format("%s is duplicated", provider.getServiceName() + provider.getMethodName()));
+                throw new DuplicateServiceException(String.format("%s is duplicated", provider.getServiceName() + provider.getMethodName()));
             }
             definitionMap.put(key, provider);
         }
-    }
-
-    private static String getFormatted(String serviceName, String methodName) {
-        return "%s.%s".formatted(serviceName.toLowerCase(), methodName.toLowerCase());
     }
 }

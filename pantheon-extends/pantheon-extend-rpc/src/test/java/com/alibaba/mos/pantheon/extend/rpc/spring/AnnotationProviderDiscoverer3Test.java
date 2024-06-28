@@ -20,9 +20,7 @@ class AnnotationProviderDiscoverer3Test {
 
     @Test
     void get() {
-        Assertions.assertThrows(NotFoundInterfaceException.class, () -> {
-            discoverer.findProviders();
-        });
+        Assertions.assertThrows(NotFoundInterfaceException.class, () -> discoverer.findProviders());
     }
 
     public interface DemoService {

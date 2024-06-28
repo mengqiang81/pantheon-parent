@@ -1,6 +1,5 @@
 package com.alibaba.mos.pantheon.extend.rpc.spring;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -51,7 +50,7 @@ public class RpcServerServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setHeader("Content-Type", "application/json;charset=utf-8");
         String protocol = req.getProtocol();
         if (PROTOCOL_HTTP_0_9.equalsIgnoreCase(protocol) || PROTOCOL_HTTP_1_0.equalsIgnoreCase(protocol)) {
@@ -77,7 +76,7 @@ public class RpcServerServlet extends HttpServlet {
         try {
             invoke.invoke(pathParams[1], pathParams[2], metas, req.getInputStream(), resp.getOutputStream());
         } catch (Exception e) {
-            log.error("method:{} invoke error", pathParams[1] + "." + pathParams[2] ,e);
+            log.error("method:{} invoke error", pathParams[1] + "." + pathParams[2], e);
             resp.setStatus(HTTP_SERVER_ERROR);
             resp.getOutputStream().write(EXECUTE_ERROR_MSG.getBytes(StandardCharsets.UTF_8));
         }

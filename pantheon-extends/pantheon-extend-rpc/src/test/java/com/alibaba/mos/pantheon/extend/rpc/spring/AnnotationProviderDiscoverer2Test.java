@@ -20,9 +20,7 @@ class AnnotationProviderDiscoverer2Test {
 
     @Test
     void get() {
-        Assertions.assertThrows(InvalidParamNameException.class, () -> {
-            discoverer.findProviders();
-        });
+        Assertions.assertThrows(InvalidParamNameException.class, () -> discoverer.findProviders());
     }
 
     @Rpc("demo")

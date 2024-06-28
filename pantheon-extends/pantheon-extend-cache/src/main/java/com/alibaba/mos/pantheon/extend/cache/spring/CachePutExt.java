@@ -13,27 +13,27 @@ import java.lang.annotation.*;
 @Reflective
 @CachePut
 public @interface CachePutExt {
-    @AliasFor(annotation = CachePut.class,attribute = "value")
+    @AliasFor(annotation = CachePut.class, attribute = "value")
     String[] value() default {};
 
-    @AliasFor(annotation = CachePut.class,attribute = "cacheNames")
+    @AliasFor(annotation = CachePut.class, attribute = "cacheNames")
     String[] cacheNames() default {};
 
-    @AliasFor(annotation = CachePut.class,attribute = "key")
+    @AliasFor(annotation = CachePut.class, attribute = "key")
     String key() default "";
 
-    @AliasFor(annotation = CachePut.class,attribute = "keyGenerator")
+    @AliasFor(annotation = CachePut.class, attribute = "keyGenerator")
     String keyGenerator() default "";
 
-    @AliasFor(annotation = CachePut.class,attribute = "cacheManager")
+    @AliasFor(annotation = CachePut.class, attribute = "cacheManager")
     String cacheManager() default "";
 
-    @AliasFor(annotation = CachePut.class,attribute = "condition")
+    @AliasFor(annotation = CachePut.class, attribute = "condition")
     String cacheResolver() default "";
 
-    @AliasFor(annotation = CachePut.class,attribute = "condition")
+    @AliasFor(annotation = CachePut.class, attribute = "condition")
     String condition() default "";
 
-    @AliasFor(annotation = CachePut.class,attribute = "unless")
+    @AliasFor(annotation = CachePut.class, attribute = "unless")
     String unless() default "";
 }

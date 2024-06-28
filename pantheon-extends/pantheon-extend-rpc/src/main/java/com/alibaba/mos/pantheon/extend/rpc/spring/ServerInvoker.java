@@ -7,6 +7,6 @@ import java.util.Map;
 
 public interface ServerInvoker {
 
-    void invoke(String service, String method, Map<String,String> metas, InputStream input, OutputStream output) throws IOException;
+    void invoke(String service, String method, Map<String, String> metas, InputStream input, OutputStream output) throws IOException;
 
 }
