@@ -2,9 +2,4 @@ management:
   server:
     port: 9090
 server:
-  port: 8081
-spring:
-  datasource:
-    password: password
-    url: jdbc:mysql://localhost:3306/example?useUnicode=true&characterEncoding=UTF-8
-    username: user
+  port: 8080

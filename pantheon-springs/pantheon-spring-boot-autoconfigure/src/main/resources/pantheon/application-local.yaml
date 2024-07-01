@@ -1,15 +1,4 @@
 spring:
-  data:
-    redis:
-      lettuce:
-        pool:
-          max-active: 2
-          max-idle: 2
-          min-idle: 1
-  datasource:
-    hikari:
-      maximum-pool-size: 5
-      minimum-idle: 1
   lifecycle:
     timeout-per-shutdown-phase: 30s
 management:

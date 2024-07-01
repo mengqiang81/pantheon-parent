@@ -154,8 +154,10 @@ spring:
       - org.springframework.boot.actuate.autoconfigure.ldap.LdapHealthContributorAutoConfiguration
       - org.springframework.boot.actuate.autoconfigure.liquibase.LiquibaseEndpointAutoConfiguration
       - org.springframework.boot.actuate.autoconfigure.mail.MailHealthContributorAutoConfiguration
+      - org.springframework.boot.actuate.autoconfigure.logging.LogFileWebEndpointAutoConfiguration
       - org.springframework.boot.actuate.autoconfigure.metrics.KafkaMetricsAutoConfiguration
       - org.springframework.boot.actuate.autoconfigure.metrics.SystemMetricsAutoConfiguration
+      - org.springframework.boot.actuate.autoconfigure.metrics.Log4J2MetricsAutoConfiguration
       - org.springframework.boot.actuate.autoconfigure.metrics.amqp.RabbitMetricsAutoConfiguration
       - org.springframework.boot.actuate.autoconfigure.metrics.data.RepositoryMetricsAutoConfiguration
       - org.springframework.boot.actuate.autoconfigure.metrics.export.appoptics.AppOpticsMetricsExportAutoConfiguration
@@ -212,46 +214,10 @@ spring:
       - org.springframework.boot.actuate.autoconfigure.web.exchanges.HttpExchangesEndpointAutoConfiguration
       - org.springframework.boot.actuate.autoconfigure.web.reactive.ReactiveManagementContextAutoConfiguration
       - org.mybatis.spring.boot.autoconfigure.MybatisLanguageDriverAutoConfiguration
-  cache:
-    type: redis
-  data:
-    jdbc:
-      repositories:
-        enabled: false
-    redis:
-      client-type: lettuce
-      lettuce:
-        pool:
-          enabled: true
-          max-active: 20
-          max-idle: 20
-          max-wait: 2s
-          min-idle: 1
-      repositories:
-        enabled: false
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    hikari:
-      allow-pool-suspension: false
-      auto-commit: true
-      connection-timeout: 600000
-      idle-timeout: 150000
-      max-lifetime: 300000
-      maximum-pool-size: 20
-      minimum-idle: 10
-      pool-name: hikari_def_pool-
-    type: com.zaxxer.hikari.HikariDataSource
-  dao:
-    exceptiontranslation:
-      enabled: false
-  flyway:
-    enabled: false
   jmx:
     enabled: false
   lifecycle:
     timeout-per-shutdown-phase: 30s
-  liquibase:
-    enabled: false
   main:
     banner-mode: 'off'
     lazy-initialization: true
@@ -262,21 +228,11 @@ spring:
       date: iso
       date-time: iso-offset
       time: iso-offset
-  pulsar:
-    function:
-      enabled: false
   servlet:
     multipart:
       enabled: false
-  sql:
-    init:
-      mode: never
 management:
-  auditevents:
-    enabled: false
   endpoint:
-    auditevents:
-      enabled: false
     beans:
       enabled: true
     caches:
@@ -287,39 +243,20 @@ management:
       enabled: true
     env:
       enabled: true
-    flyway:
-      enabled: false
     health:
       enabled: true
-      group:
-        liveness:
-          include:
-            - ping
-          show-components: never
-          show-details: never
-        readiness:
-          include:
-            - '*'
-          show-components: never
-          show-details: never
+      livenessstate:
+        enabled: true
+      readinessstate:
+        enabled: true
       logging:
         slow-indicator-threshold: 30s
       probes:
-        enabled: false
+        enabled: true
       show-components: never
       show-details: never
     heapdump:
       enabled: true
-    httpexchanges:
-      enabled: true
-    info:
-      enabled: true
-    integrationgraph:
-      enabled: false
-    liquibase:
-      enabled: false
-    logfile:
-      enabled: false
     loggers:
       enabled: true
     mappings:
@@ -329,12 +266,6 @@ management:
     prometheus:
       enabled: true
     quartz:
-      enabled: false
-    sbom:
-      enabled: false
-    scheduledtasks:
-      enabled: true
-    sessions:
       enabled: false
     shutdown:
       enabled: false
@@ -353,9 +284,6 @@ management:
         include: '*'
   health:
     diskspace:
-      enabled: false
-  httpexchanges:
-    recording:
       enabled: false
   observations:
     annotations:
