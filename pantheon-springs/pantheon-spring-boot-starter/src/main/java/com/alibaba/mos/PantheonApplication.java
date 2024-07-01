@@ -14,6 +14,10 @@ public class PantheonApplication {
      */
     private static final List<String> DEFAULT_CONFIG_LOAD = List.of(
             "optional:file:./",
+            "optional:file:./mos",
+            "optional:file:./mos/*",
+            "optional:file:./pantheon",
+            "optional:file:./pantheon/*",
             "optional:file:./config/",
             "optional:file:./config/*",
             "optional:classpath:/mos/",
