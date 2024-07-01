@@ -1,4 +1,4 @@
-package com.alibaba.mos.pantheon.spring.starter.mybatis;
+package com.alibaba.mos.pantheon.extend.mybatis.spring.aot;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aot.hint.RuntimeHints;
@@ -16,7 +16,7 @@ public class MybatisConfigRuntimeHintsRegistrar implements RuntimeHintsRegistrar
 
     @Override
     public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
-        log.info("Registering Mybatis configuration hints for " + FILE_NAMES + "(" + EXTENSIONS + ") at " + CONFIG_LOCATIONS);
+        log.info("Registering Mybatis configuration hints for {}({}) at {}", FILE_NAMES, EXTENSIONS, CONFIG_LOCATIONS);
         FilePatternResourceHintsRegistrar
                 .forClassPathLocations(CONFIG_LOCATIONS)
                 .withFilePrefixes(FILE_NAMES)

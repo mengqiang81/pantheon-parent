@@ -16,7 +16,7 @@ public class PantheonConfigRuntimeHintsRegistrar implements RuntimeHintsRegistra
 
     @Override
     public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
-        log.info("Registering Pantheon configuration hints for " + FILE_NAMES + "(" + EXTENSIONS + ") at " + CONFIG_LOCATIONS);
+        log.info("Registering Pantheon configuration hints for {}({}) at {}", FILE_NAMES, EXTENSIONS, CONFIG_LOCATIONS);
         FilePatternResourceHintsRegistrar
                 .forClassPathLocations(CONFIG_LOCATIONS)
                 .withFilePrefixes(FILE_NAMES)

@@ -16,7 +16,7 @@ public class MosConfigRuntimeHintsRegistrar implements RuntimeHintsRegistrar {
 
     @Override
     public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
-        log.info("Registering Mos configuration hints for " + FILE_NAMES + "(" + EXTENSIONS + ") at " + CONFIG_LOCATIONS);
+        log.info("Registering Mos configuration hints for {}({}) at {}", FILE_NAMES, EXTENSIONS, CONFIG_LOCATIONS);
         FilePatternResourceHintsRegistrar
                 .forClassPathLocations(CONFIG_LOCATIONS)
                 .withFilePrefixes(FILE_NAMES)
