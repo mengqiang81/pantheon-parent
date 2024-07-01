@@ -1,4 +1,7 @@
 org.springframework.aot.hint.RuntimeHintsRegistrar=\
+com.alibaba.mos.pantheon.spring.starter.core.PantheonConfigRuntimeHintsRegistrar,\
+com.alibaba.mos.pantheon.spring.starter.core.MosConfigRuntimeHintsRegistrar,\
+com.alibaba.mos.pantheon.spring.starter.mybatis.MybatisConfigRuntimeHintsRegistrar,\
 com.alibaba.mos.pantheon.extend.mybatis.spring.aot.MybatisBasicRuntimeHintsRegistrar
 
 org.springframework.beans.factory.aot.BeanFactoryInitializationAotProcessor=\

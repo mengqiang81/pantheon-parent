@@ -1,0 +1,30 @@
+spring:
+  data:
+    redis:
+      lettuce:
+        pool:
+          max-active: 32
+          max-idle: 32
+          min-idle: 5
+  datasource:
+    hikari:
+      maximum-pool-size: 200
+      minimum-idle: 10
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+management:
+  server:
+    port: 9090
+  tracing:
+    sampling:
+      probability: 0.1
+server:
+  port: 8080
+  undertow:
+    buffer-size: 16364
+    threads:
+      io: 32
+      worker: 256
+logging:
+  file:
+    name: ../logs/app.log

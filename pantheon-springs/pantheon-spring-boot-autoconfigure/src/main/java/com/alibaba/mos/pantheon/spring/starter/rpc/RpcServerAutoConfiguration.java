@@ -40,8 +40,10 @@ public class RpcServerAutoConfiguration {
     @Bean
     public ServletRegistrationBean<RpcServerServlet> rpcServerServletServletRegistrationBean(RpcServerServlet rpcServerServlet) {
         ServletRegistrationBean<RpcServerServlet> registrationBean = new ServletRegistrationBean<>();
+        registrationBean.setName("api");
         registrationBean.addUrlMappings("/api/*");
         registrationBean.setServlet(rpcServerServlet);
+        registrationBean.setAsyncSupported(true);
         return registrationBean;
     }
 }

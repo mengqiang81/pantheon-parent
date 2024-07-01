@@ -1,4 +1,4 @@
-package com.alibaba.mos.pantheon.spring.boot.autoconfigure;
+package com.alibaba.mos.pantheon.spring.starter.mybatis;
 
 import com.alibaba.mos.pantheon.extend.mybatis.spring.aot.MybatisMapperFactoryBeanPostProcessor;
 import org.apache.ibatis.session.SqlSessionFactory;

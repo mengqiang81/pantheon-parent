@@ -14,7 +14,6 @@
 
     <name>Pantheon Mos Adapter Modules Manager</name>
 
-
     <build>
         <pluginManagement>
             <plugins>

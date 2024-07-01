@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: pantheon-bootstrap
+  profiles:
+    active: '@spring.profiles.active@'
