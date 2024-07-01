@@ -16,10 +16,11 @@ public class PantheonApplication {
             "optional:file:./",
             "optional:file:./config/",
             "optional:file:./config/*",
+            "optional:classpath:/mos/",
             "optional:classpath:/pantheon/",
             "optional:classpath:/",
             "optional:classpath:/config/"
-            );
+    );
 
     private static final Map<String, Object> DEFAULT_CONFIG = Map.of(
             "spring.config.location", String.join(";", DEFAULT_CONFIG_LOAD)
