@@ -231,6 +231,9 @@ spring:
   servlet:
     multipart:
       enabled: false
+  threads:
+    virtual:
+      enabled: true
 management:
   endpoint:
     beans:
