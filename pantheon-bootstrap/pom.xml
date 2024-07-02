@@ -219,8 +219,8 @@
                                 <enabled>true</enabled>
                             </metadataRepository>
                             <quickBuild>true</quickBuild>
+                            <verbose>true</verbose>
                             <buildArgs>
-                                <buildArg>--verbose</buildArg>
                                 <buildArg>-H:+StaticExecutableWithDynamicLibC</buildArg>
                             </buildArgs>
                         </configuration>
@@ -279,9 +279,8 @@
                             <metadataRepository>
                                 <enabled>true</enabled>
                             </metadataRepository>
-                            <buildArgs>
-                                <buildArg>--verbose</buildArg>
-                            </buildArgs>
+                            <quickBuild>true</quickBuild>
+                            <verbose>true</verbose>
                         </configuration>
                         <extensions>true</extensions>
                         <executions>
