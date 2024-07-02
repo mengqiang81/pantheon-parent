@@ -184,6 +184,12 @@
                 <artifactId>commons-lang</artifactId>
                 <version>${apache.commons.lang.version}</version>
             </dependency>
+            <!--@FIX 解决 graalvm 兼容性问题-->
+            <dependency>
+                <groupId>org.wildfly.common</groupId>
+                <artifactId>wildfly-common</artifactId>
+                <version>1.7.0.Final</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.alibaba.mos</groupId>
