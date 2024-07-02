@@ -12,7 +12,7 @@ public class MosConfigRuntimeHintsRegistrar implements RuntimeHintsRegistrar {
 
     private static final List<String> CONFIG_LOCATIONS = List.of("classpath:/mos/");
     private static final List<String> FILE_NAMES = List.of("");
-    private static final List<String> EXTENSIONS = List.of("");
+    private static final List<String> EXTENSIONS = List.of(".yaml", ".yml", ".properties", ".xml");
 
     @Override
     public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
