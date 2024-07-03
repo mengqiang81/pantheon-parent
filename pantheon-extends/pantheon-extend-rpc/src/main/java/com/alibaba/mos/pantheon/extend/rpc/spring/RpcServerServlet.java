@@ -1,5 +1,6 @@
 package com.alibaba.mos.pantheon.extend.rpc.spring;
 
+import com.alibaba.mos.pantheon.extend.rpc.provider.ServerInvoker;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

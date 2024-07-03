@@ -1,4 +1,4 @@
-package com.alibaba.mos.pantheon.extend.rpc.spring;
+package com.alibaba.mos.pantheon.extend.rpc.provider;
 
 import java.io.IOException;
 import java.io.InputStream;

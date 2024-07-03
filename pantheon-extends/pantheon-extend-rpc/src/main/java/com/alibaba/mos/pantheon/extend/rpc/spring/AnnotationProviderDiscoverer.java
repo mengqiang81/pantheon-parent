@@ -1,5 +1,6 @@
 package com.alibaba.mos.pantheon.extend.rpc.spring;
 
+import com.alibaba.mos.pantheon.extend.rpc.provider.ProviderDefinition;
 import com.alibaba.mos.pantheon.extend.rpc.exception.DuplicateParamNameException;
 import com.alibaba.mos.pantheon.extend.rpc.exception.InvalidParamNameException;
 import com.alibaba.mos.pantheon.extend.rpc.exception.NotFoundInterfaceException;

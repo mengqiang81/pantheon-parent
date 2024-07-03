@@ -1,13 +1,9 @@
-package com.alibaba.mos.pantheon.extend.rpc.spring;
+package com.alibaba.mos.pantheon.extend.rpc.provider;
 
 import com.alibaba.mos.pantheon.extend.rpc.Resp;
 import com.alibaba.mos.pantheon.extend.rpc.exception.DuplicateServiceException;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.util.StdDateFormat;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -18,15 +14,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
 public class DefaultServerInvoker implements ServerInvoker {
-    private static final ObjectMapper MAPPER = new ObjectMapper().findAndRegisterModules()
-            .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-            .setDateFormat(new StdDateFormat())
-            .setLocale(Locale.CHINA)
-            .setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"))
-            .setSerializationInclusion(JsonInclude.Include.NON_NULL)
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     private static final Map<String, ProviderDefinition> definitionMap = new ConcurrentHashMap<>();
+
+    private final ObjectMapper mapper;
+
+    public DefaultServerInvoker(ObjectMapper mapper) {
+        this.mapper = mapper;
+    }
 
     private static String getFormatted(String serviceName, String methodName) {
         return "%s.%s".formatted(serviceName.toLowerCase(), methodName.toLowerCase());
@@ -40,13 +35,13 @@ public class DefaultServerInvoker implements ServerInvoker {
         if (Objects.isNull(service) || service.isBlank()) {
             resp.setCode("service-missing");
             resp.setMessage("服务不能为空");
-            MAPPER.writeValue(output, resp);
+            mapper.writeValue(output, resp);
             return;
         }
         if (Objects.isNull(method) || method.isBlank()) {
             resp.setCode("method-missing");
             resp.setMessage("方法不能为空");
-            MAPPER.writeValue(output, resp);
+            mapper.writeValue(output, resp);
             return;
         }
 
@@ -55,22 +50,22 @@ public class DefaultServerInvoker implements ServerInvoker {
         if (Objects.isNull(provider)) {
             resp.setCode("method-off");
             resp.setMessage("API不存在或API已下线");
-            MAPPER.writeValue(output, resp);
+            mapper.writeValue(output, resp);
             return;
         }
         List<Object> params = new ArrayList<>();
         if (provider.getParamTypes().size() == 1) {
             for (Map.Entry<String, Class<?>> entry : provider.getParamTypes().entrySet()) {
-                params.add(MAPPER.readValue(input, entry.getValue()));
+                params.add(mapper.readValue(input, entry.getValue()));
             }
         } else {
-            JsonNode nodes = MAPPER.readTree(input);
+            JsonNode nodes = mapper.readTree(input);
             for (Map.Entry<String, Class<?>> entry : provider.getParamTypes().entrySet()) {
                 JsonNode node = nodes.get(entry.getKey());
                 if (Objects.isNull(node) || node.isNull()) {
                     params.add(null);
                 } else {
-                    params.add(MAPPER.convertValue(node, entry.getValue()));
+                    params.add(mapper.convertValue(node, entry.getValue()));
                 }
             }
         }
@@ -85,13 +80,13 @@ public class DefaultServerInvoker implements ServerInvoker {
             log.error("method:{} invoke error", key);
             resp.setCode("service-error");
             resp.setMessage("服务调用失败，请稍后重试");
-            MAPPER.writeValue(output, resp);
+            mapper.writeValue(output, resp);
         }
         if (void.class.equals(provider.getReturnType())) {
-            MAPPER.writeValue(output, resp);
+            mapper.writeValue(output, resp);
         } else {
             resp.setData(ret);
-            MAPPER.writeValue(output, resp);
+            mapper.writeValue(output, resp);
         }
     }
 
